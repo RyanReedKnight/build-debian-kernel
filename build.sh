@@ -4,14 +4,17 @@ LINUX_REPO="https://github.com/torvalds/linux.git"
 MAKE_OLD_CONF="make oldconfig"
 MAKE_BINDEB_PKG="make -j $(nproc) bindeb-pkg"
 
-# Create debs direcotry is it is note present.
+echo "Calling \"sudo apt build-dep linux\" to install necisary build dependencies."
+sudo apt update && sudo apt build-dep linux
+
+# Create debs directory is it is not present.
 if [ ! -d debs ]
 then
 	mkdir debs
 fi
 
 echo "Compiling upstream kernel and building deb packages."
-
+echo "This will take a minute (i.e like an hour)."
 # If linux directory is not present, clone repo.
 if [ ! -d "linux" ]
 then
