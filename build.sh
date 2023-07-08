@@ -4,6 +4,12 @@ LINUX_REPO="https://github.com/torvalds/linux.git"
 MAKE_OLD_CONF="make oldconfig"
 MAKE_BINDEB_PKG="make -j $(nproc) bindeb-pkg"
 
+# Create debs direcotry is it is note present.
+if [ ! -d debs ]
+then
+	mkdir debs
+fi
+
 echo "Compiling upstream kernel and building deb packages."
 
 # If linux directory is not present, clone repo.
