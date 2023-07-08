@@ -5,7 +5,7 @@ echo "Removing packages from previous build, cleaning repo."
 MAKE_CLEAN="make clean"
 MAKE_MRPROPER="make mrproper"
 
-if [ -d linux]
+if [ -d "linux" ]
 then
 	cd linux
 	echo "Calling $MAKE_CLEAN"

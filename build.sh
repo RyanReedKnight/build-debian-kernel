@@ -9,7 +9,7 @@ echo "Calling \"sudo apt build-dep linux\" to install necisary build dependencie
 sudo apt update && sudo apt build-dep linux
 
 # Create debs directory is it is not present.
-if [ ! -d debs ]
+if [ ! -d "debs" ]
 then
 	mkdir debs
 fi
