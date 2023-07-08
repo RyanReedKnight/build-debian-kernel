@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CURRENT_KERNEL_VERSION=6
 LINUX_REPO="https://github.com/torvalds/linux.git"
 MAKE_OLD_CONF="make oldconfig"
 MAKE_BINDEB_PKG="make -j $(nproc) bindeb-pkg"
@@ -31,8 +32,8 @@ echo "Copying $(uname -r) config file to ./linux/.config"
 cp /boot/config-$(uname -r) .config
 echo "Calling \"$MAKE_OLD_CONF\" to udjust ./linux/.config to new kernel."
 $MAKE_OLD_CONF
-echo "Calling $MAKE_BINDEB_PKG to "
+echo "Calling $MAKE_BINDEB_PKG to compile kernel and create deb packages."
 $MAKE_BINDEB_PKG
 cd ..
-mv *6* ./debs/
+mv *$CURRENT_KERNEL_VERSION* ./debs/
 echo "deb packages can be found in debs directory"
